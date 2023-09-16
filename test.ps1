@@ -17,21 +17,21 @@ param (
     [Parameter()][switch]$ShowTestErrors
 )
 
-function Set-TestsName{
+function Set-TestName{
     [CmdletBinding()]
-    [Alias("stt")]
+    [Alias("st")]
     param (
-        [Parameter(Position=0,ValueFromPipeline)][string]$TestsName
+        [Parameter(Position=0,ValueFromPipeline)][string]$TestName
     )
 
     process{
-        $global:TestName = $TestsName
+        $global:TestName = $TestName
     }
 }
 
-function Clear-TestsName{
+function Clear-TestName{
     [CmdletBinding()]
-    [Alias("ctt")]
+    [Alias("ct")]
     param (
     )
 
@@ -70,8 +70,8 @@ Import-TestingHelper -AllowPrerelease
 # Test-ModulelocalPSD1 -ShowTestErrors:$ShowTestErrors 
 # Test-ModulelocalPSD1 -ShowTestErrors:$ShowTestErrors -TestName StagingModuleTest_*
 
-if($TestsName){
-    Test-ModulelocalPSD1 -ShowTestErrors:$ShowTestErrors -TestName $TestsName
+if($TestName){
+    Test-ModulelocalPSD1 -ShowTestErrors:$ShowTestErrors -TestName $TestName
 } else {
     Test-ModulelocalPSD1 -ShowTestErrors:$ShowTestErrors
 }
