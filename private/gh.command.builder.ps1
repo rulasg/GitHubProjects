@@ -8,7 +8,7 @@ function Build-GhCommand{
         [Parameter(Position = 3)][string]$Parameter2
     )
 
-    $expression = $GhCommands.$GhCommandKey
+    $expression = $global:GhCommands.$GhCommandKey
 
     $ret = $expression -f $Parameter0,$Parameter1,$Parameter3
 

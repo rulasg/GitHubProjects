@@ -27,7 +27,7 @@ function Invoke-GhExpressionToJson{
 
     $result = Invoke-GhExpression -Command $Command
 
-    $ret = $null -eq $result ? $null : $result | ConvertTo-Json
+    $ret = $null -eq $result ? $null : $result | ConvertFrom-Json
 
     return $ret
 }
