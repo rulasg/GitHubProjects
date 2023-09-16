@@ -6,7 +6,7 @@ function GitHubProjectsTest_GHPEnvironment_Resolve{
 
     $expressionPattern_Project_List = 'gh project list --owner "{0}" --limit 1000 --format json'
     
-    Set-GitUserRulasg
+     Set-DevUserRulasg  
 
     Clear-GhPEnvironment
 

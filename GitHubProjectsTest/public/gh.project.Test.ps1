@@ -103,7 +103,7 @@ function GitHubProjectsTest_GHP_GHPItem_Add_Manual_Success{
 
     $expresionProjectList = 'gh project list --owner "{0}" --limit 1000 --format json' -f $owner
     
-    Set-GitUserRaulSolidifyUser
+    Set-DevUserRaulSolidifyUser
     
     $null = Clear-GhPEnvironment
 
@@ -117,7 +117,7 @@ function GitHubProjectsTest_GHP_GHPItem_Add_Manual_Success{
 function GitHubProjectsTest_GHP_GHPItems_Get_Success{
     # Need to inject gh call for testing
 
-    Set-GitUserRaulSolidifyUser
+    Set-DevUserRaulSolidifyUser
 
     $result = Get-GhPItems -ProjectTitle "Clients Planner" -Owner "solidify-internal" -WhatIf @InfoParameters
     Assert-IsNull -Object $result
@@ -125,7 +125,7 @@ function GitHubProjectsTest_GHP_GHPItems_Get_Success{
 }
 
 function GitHubProjectsTest_GHP_Projects_Success{
-    Set-GitUserRaulSolidifyUser
+    Set-DevUserRaulSolidifyUser
 
     $expressionPattern_Project_List = 'gh project list --limit 1000 --format json'
     $expressionPattern_Project_List += ' --owner "{0}"'

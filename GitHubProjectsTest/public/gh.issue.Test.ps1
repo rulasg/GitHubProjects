@@ -18,15 +18,15 @@ function GitHubProjectsTest_GHI_NewGHIssue_Simple{
 
 function GitHubProjectsTest_GHI_GetGHIssue_Simple{
 
-    Set-GitUserTestingHelperAgent
+    Set-DevUserRulasg
 
-    $repo = "rulasg/publicrepo"
+    $repo = "rulasg/testPublicRepo"
 
     $result = Get-GhIssues -Repo $repo @InfoParameters
 
     Assert-IsNotNull -Object $result
     Assert-Count -Expected 3 -Presented $result
-    Assert-AreEqual -Expected 'https://github.com/rulasg/publicrepo/issues' -Presented ($result[0].url | Split-Path -Parent)
+    Assert-AreEqual -Expected 'https://github.com/rulasg/testPublicRepo/issues' -Presented ($result[0].url | Split-Path -Parent)
 
 
 
