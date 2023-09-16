@@ -19,6 +19,18 @@ function Invoke-GhExpression{
     return $ret
 }
 
+function Invoke-GhExpressionToJson{
+    [CmdletBinding(SupportsShouldProcess)]
+    param(
+        [Parameter(Mandatory)][string]$Command
+    )
+
+    $result = Invoke-GhExpression -Command $Command
+
+    $ret = $null -eq $result ? $null : $result | ConvertTo-Json
+
+    return $ret
+}
 
 # GHRepoListJson
 
