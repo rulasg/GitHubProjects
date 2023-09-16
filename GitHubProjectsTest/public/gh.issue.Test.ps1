@@ -18,7 +18,8 @@ function GitHubProjectsTest_GHI_NewGHIssue_Simple{
 
 function GitHubProjectsTest_GHI_GetGHIssue_Simple{
 
-    Set-DevUserRulasg
+    $global:TestData_Issue_List = $TestData_Issue_List
+    $global:GhCommands.Issue_List = 'echo $global:TestData_Issue_List'
 
     $repo = "rulasg/testPublicRepo"
 
@@ -27,7 +28,5 @@ function GitHubProjectsTest_GHI_GetGHIssue_Simple{
     Assert-IsNotNull -Object $result
     Assert-Count -Expected 3 -Presented $result
     Assert-AreEqual -Expected 'https://github.com/rulasg/testPublicRepo/issues' -Presented ($result[0].url | Split-Path -Parent)
-
-
 
 }

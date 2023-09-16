@@ -129,27 +129,29 @@ function Get-GhIssues{
         $Repo = Resolve-GhIEnvironmentRepo -Repo $Repo ; if(!$Repo){return $null}
 
         # Build expression
-        $expressionPattern = 'gh issue list --repo {0} --json number,title,state,url'
-        $command = $expressionPattern -f $Repo
+        # $expressionPattern = 'gh issue list --repo {0} --json number,title,state,url'
+        # $command = $expressionPattern -f $Repo
+
+        $command = Build-GhCommand Issue_List $Repo
 
         # Invoke Expresion
-        $result = Invoke-GhExpression -Command $command
+        $result = Invoke-GhExpressionToJson -Command $command
 
-        # Check output success
-        $success = Test-GhIssueList -Result $result
+        # # Check output success
+        # $success = Test-GhIssueList -Result $result
 
-        # Error checking
-        if(!$success){
-            "Error [{0}] calling gh expression [{1}]" -f $result, $command | Write-Error
-            return $null
-        }
+        # # Error checking
+        # if(!$success){
+        #     "Error [{0}] calling gh expression [{1}]" -f $result, $command | Write-Error
+        #     return $null
+        # }
 
         # Transform
         # So far no transformation needed
-        $ret = $result | ConvertFrom-Json
+        # $ret = $result | ConvertFrom-Json
 
         # Return issues
-        return $ret
+        return $result
     }
 } Export-ModuleMember -Function Get-GhIssues -Alias gghi
 
